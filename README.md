@@ -11,3 +11,12 @@ To setup wrangler for a new project from the scratch, follow https://developers.
 
 
 ## Creating Worker with wrangler
+
+STEP 1: Clone the given code.
+
+STEP2 : Run the login command to connect to wrangler environment
+```
+npm run login
+```
+
+![image](https://github.com/dheepak-rmn/sample-clouldflare-workers/assets/135533984/99e87de3-2f1c-4434-88d3-958105a0df5d)
