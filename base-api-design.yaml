@@ -1,0 +1,325 @@
+openapi: 3.0.0
+info:
+  title: User, Subscription, Payment, and Needs API
+  version: 1.0.0
+paths:
+  /api/user:
+    post:
+      summary: Create a new user
+      responses:
+        '200':
+          description: User created successfully
+        '500':
+          description: Internal server error
+
+  /api/user/{userId}:
+    get:
+      summary: Get user details
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user to retrieve
+      responses:
+        '200':
+          description: User details retrieved successfully
+        '500':
+          description: Internal server error
+
+    put:
+      summary: Update user details
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user to update
+      responses:
+        '200':
+          description: User updated successfully
+        '500':
+          description: Internal server error
+
+    delete:
+      summary: Delete user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user to delete
+      responses:
+        '200':
+          description: User deleted successfully
+        '500':
+          description: Internal server error
+
+  /api/user/type/{userType}:
+    get:
+      summary: Get users by type
+      parameters:
+        - in: path
+          name: userType
+          required: true
+          schema:
+            type: string
+          description: Type of users to retrieve
+      responses:
+        '200':
+          description: Users retrieved successfully
+        '500':
+          description: Internal server error
+
+  /api/subscription:
+    post:
+      summary: Create a new subscription plan
+      responses:
+        '200':
+          description: Subscription plan created successfully
+        '500':
+          description: Internal server error
+
+  /api/subscription/{subscriptionId}:
+    get:
+      summary: Get subscription plan details
+      parameters:
+        - in: path
+          name: subscriptionId
+          required: true
+          schema:
+            type: integer
+          description: ID of the subscription plan to retrieve
+      responses:
+        '200':
+          description: Subscription plan details retrieved successfully
+        '500':
+          description: Internal server error
+
+  /api/user/{userId}/subscriptions:
+    get:
+      summary: Get subscriptions for a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user to retrieve subscriptions for
+      responses:
+        '200':
+          description: Subscriptions retrieved successfully
+        '500':
+          description: Internal server error
+
+  /api/subscription/{subscriptionId}/status:
+    put:
+      summary: Update subscription status
+      parameters:
+        - in: path
+          name: subscriptionId
+          required: true
+          schema:
+            type: integer
+          description: ID of the subscription plan to update status
+      responses:
+        '200':
+          description: Subscription status updated successfully
+        '500':
+          description: Internal server error
+
+  /api/payment:
+    post:
+      summary: Create a new payment
+      responses:
+        '200':
+          description: Payment created successfully
+        '500':
+          description: Internal server error
+
+  /api/payments/{paymentId}:
+    get:
+      summary: Get payment details
+      parameters:
+        - in: path
+          name: paymentId
+          required: true
+          schema:
+            type: integer
+          description: ID of the payment to retrieve
+      responses:
+        '200':
+          description: Payment details retrieved successfully
+        '500':
+          description: Internal server error
+
+  /api/user/{userId}/payment:
+    get:
+      summary: Get payments for a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user to retrieve payments for
+      responses:
+        '200':
+          description: Payments retrieved successfully
+        '500':
+          description: Internal server error
+
+  /api/user/{userId}/payment/{paymenId}/refund:
+    post:
+      summary: Refund payments for a user
+      parameters:
+        - in: path
+          name: userId
+          required: true
+          schema:
+            type: integer
+          description: ID of the user to refund payments for
+        - in: path
+          name: paymenId
+          required: true
+          schema:
+            type: integer
+          description: payment id to refund
+      responses:
+        '200':
+          description: Payments refunded successfully
+        '500':
+          description: Internal server error
+
+  /api/needs:
+    post:
+      summary: Create a new need
+      responses:
+        '200':
+          description: Need created successfully
+        '500':
+          description: Internal server error
+
+  /api/needs/{needId}:
+    get:
+      summary: Get need details
+      parameters:
+        - in: path
+          name: needId
+          required: true
+          schema:
+            type: integer
+          description: ID of the need to retrieve
+      responses:
+        '200':
+          description: Need details retrieved successfully
+        '500':
+          description: Internal server error
+
+  /api/customers/{customerId}/needs:
+    get:
+      summary: Get needs for a customer
+      parameters:
+        - in: path
+          name: customerId
+          required: true
+          schema:
+            type: integer
+          description: ID of the customer to retrieve needs for
+      responses:
+        '200':
+          description: Needs retrieved successfully
+        '500':
+          description: Internal server error
+
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: User ID
+      firstName:
+        type: string
+        description: User's first name
+      lastName:
+        type: string
+        description: User's last name
+      password:
+        type: string
+        description: User's password
+      uniqueUserId:
+        type: string
+        description: User's unique ID
+      authProvider:
+        type: string
+        description: User's authentication provider
+
+  SubscriptionPlan:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Subscription plan ID
+      uniqueSubscriptionId:
+        type: string
+        description: Subscription plan's unique ID
+      name:
+        type: string
+        description: Subscription plan name
+      price:
+        type: number
+        description: Subscription plan price
+      billingCycle:
+        type: string
+        description: Subscription plan billing cycle
+      trialPeriodInDays:
+        type: integer
+        description: Subscription plan trial period in days
+
+  Payment:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Payment ID
+      paymentOrderId:
+        type: string
+        description: Payment order ID
+      status:
+        type: string
+        description: Payment status
+      paymentDate:
+        type: string
+        format: date
+        description: Payment date
+      paymentAmount:
+        type: number
+        description: Payment amount
+      paymentType:
+        type: string
+        description: Payment type
+
+  Need:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Need ID
+      description:
+        type: string
+        description: Need description
+
+  ErrorResponse:
+    type: object
+    properties:
+      message:
+        type: string
+        description: Error message
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/DHEEPAKRAMANATHAN/Therapy/1.0.0
