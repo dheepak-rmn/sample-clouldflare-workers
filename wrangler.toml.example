@@ -2,8 +2,6 @@ name = "cloudflare-code-workers"
 main = "src/worker.ts"
 compatibility_date = "2023-06-21"
 
-[vars]
-
 # Variable bindings. These are arbitrary, plaintext strings (similar to environment variables)
 # Note: Use secrets to store sensitive data.
 # Docs: https://developers.cloudflare.com/workers/platform/environment-variables
@@ -55,4 +53,5 @@ compatibility_date = "2023-06-21"
 [[d1_databases]]
 binding = "DB"
 database_name = "app-db"
-database_id = "264a479e-0b38-4253-8d23-04a150df08e0"
+# Database id from the clouldflare environment
+database_id = ""
