@@ -20,3 +20,11 @@ npm run login
 ```
 
 ![image](https://github.com/dheepak-rmn/sample-clouldflare-workers/assets/135533984/99e87de3-2f1c-4434-88d3-958105a0df5d)
+
+STEP 3: Start the worker in local environment (http://localhost:8787)
+
+```
+npm run start
+```
+
+![image](https://github.com/dheepak-rmn/sample-clouldflare-workers/assets/135533984/0ba95b04-1a5d-41cb-9308-251fa9138ab9)
