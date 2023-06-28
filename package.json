@@ -1,0 +1,16 @@
+{
+  "name": "cloudflare-code-workers",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler publish",
+    "start": "wrangler dev",
+    "create-db": "wrangler d1 create",
+    "configure-db": "wrangler d1 execute app-db --local --file=./schema.sql"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230419.0",
+    "typescript": "^5.0.4",
+    "wrangler": "^3.0.0"
+  }
+}
