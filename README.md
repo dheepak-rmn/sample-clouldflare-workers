@@ -10,4 +10,4 @@ https://developers.cloudflare.com/workers/get-started/guide/
 To setup wrangler for a new project from the scratch, follow https://developers.cloudflare.com/workers/get-started/guide/
 
 
-## Installing Wrangler
+## Creating Worker with wrangler
